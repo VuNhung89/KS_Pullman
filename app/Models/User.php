@@ -21,7 +21,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
+
+    // Một user có nhiều booking
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class); //$this đại diện cho model User hiện tại
+    }
 
     /**
      * The attributes that should be hidden for serialization.
