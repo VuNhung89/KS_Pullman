@@ -38,8 +38,8 @@ class AuthController extends Controller
     // Đăng nhập
     public function login(Request $request)
     {
-        if (!Auth::attempt($request(['email' => $request->email, 'password' => $request->password]))) {
-            return response()->json(['message' => 'Sai thông tin đăng nhập'], 401);
+        if (!Auth::attempt($request->only('email', 'password'))) { //thử email, pass trong request có trùng với email, pass trong db hay ko
+            return response()->json(['message' => 'Sai thông tin đăng nhập'], 401); //nếu không trả về lỗi 401
         }
         //lấy thông tin người dùng hiện tại
         /** @var \App\Models\User $user */
