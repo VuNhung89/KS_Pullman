@@ -28,11 +28,13 @@ class AuthController extends Controller
             'role' => 'user',
         ]);
 
-        return response()->json([
-            'message' => 'Đăng ký thành công',
-            'user' => $user,
+        return response()->json(
+            [
+                'message' => 'Đăng ký thành công',
+                'user' => $user,
+            ],
             201 // mã trạng thái 201 (created)
-        ]);
+        );
     }
 
     // Đăng nhập
@@ -61,8 +63,7 @@ class AuthController extends Controller
             'access_token' => $token, //access_token: chuỗi thông báo truy cập
             'token_type' => 'Bearer', //token_type: loại token,
             'user' => $user, //thông tin người dùng
-            200
-        ]);
+        ], 200);
     }
 
     // Đăng xuất
